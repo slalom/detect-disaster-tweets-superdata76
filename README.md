@@ -9,7 +9,9 @@ docker
 
 ## Docker Build/Run Container
 `docker image build -t superdata76:latest .`
+
 Copies `./data/` and `./jupyter/` into container
+
 `docker container run -p 8888:8888 -p 4040:4040 superdata76:latest`
 
 ```
@@ -35,9 +37,12 @@ Copy token value, e.g. `ce31ebdfbe453cb710d1a678ef7906fbc27addd68c961918`, and o
 Because Jupyter is running on Docker in an ephemeral state, I follow this workflow to save changes to notebooks:
 https://stackoverflow.com/questions/41110338/how-to-save-a-file-into-a-directory-in-jupyter-notebook
 > You can save a notebook to a location of your choice by using the "File" -> "Download as" -> "Notebook (.ipynb)" option from the menu.
+
 After saving the notebook in `./jupyter/*.ipynb`, stop Docker container, run the build step and start the container. Your updated notebook should now be available in the updated container.
 
 ### jupyter/superdata76.ipynb
 http://127.0.0.1:8888/notebooks/jupyter/superdata76.ipynb
+
 Warning: this can take several minutes to execute; it only iterates over 20 tweets, but downloading Spark dependencies can take a few minutes.
+
 This runs an example string and tweets through `analyze_sentiment` pipeline from https://nlp.johnsnowlabs.com/docs/en/pipelines
