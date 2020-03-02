@@ -58,14 +58,12 @@ RUN wget https://s3.amazonaws.com/auxdata.johnsnowlabs.com/spark-nlp-resources/g
     rm glove.6B.100d.zip
 
 # Make sure the contents of our repo are in ${HOME}
-RUN mkdir -p /home/jovyan/tutorials
 RUN mkdir -p /home/jovyan/jupyter
 
 COPY data ${HOME}/data
 COPY jupyter ${HOME}/jupyter
-COPY tutorials ${HOME}/tutorials
 RUN jupyter notebook --generate-config
-COPY jupyter_notebook_config.json /home/jovyan/.jupyter/jupyter_notebook_config.json
+# COPY jupyter_notebook_config.json /home/jovyan/.jupyter/jupyter_notebook_config.json
 USER root
 RUN chown -R ${NB_UID} ${HOME}
 USER ${NB_USER}
